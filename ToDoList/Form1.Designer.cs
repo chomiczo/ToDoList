@@ -1,6 +1,6 @@
 ﻿namespace ToDoList
 {
-    partial class Form1
+    partial class ToDoList
     {
         /// <summary>
         /// Required designer variable.
@@ -30,18 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.entriesListView = new System.Windows.Forms.ListView();
             this.titleColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dueDateColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.newButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.entrySource = new System.Windows.Forms.BindingSource(this.components);
             this.textDescription = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.titleText = new System.Windows.Forms.TextBox();
+            this.entrySource = new System.Windows.Forms.BindingSource(this.components);
+            this.Zapisz = new System.Windows.Forms.Button();
+            this.Wczytaj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -58,12 +60,14 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.listView1);
+            this.splitContainer1.Panel1.Controls.Add(this.entriesListView);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.button2);
-            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.Wczytaj);
+            this.splitContainer1.Panel2.Controls.Add(this.Zapisz);
+            this.splitContainer1.Panel2.Controls.Add(this.newButton);
+            this.splitContainer1.Panel2.Controls.Add(this.deleteButton);
             this.splitContainer1.Panel2.Controls.Add(this.dateTimePicker1);
             this.splitContainer1.Panel2.Controls.Add(this.textDescription);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
@@ -74,19 +78,20 @@
             this.splitContainer1.SplitterDistance = 282;
             this.splitContainer1.TabIndex = 0;
             // 
-            // listView1
+            // entriesListView
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.entriesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.titleColumn,
             this.dueDateColumn});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 0);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(458, 282);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.entriesListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.entriesListView.HideSelection = false;
+            this.entriesListView.Location = new System.Drawing.Point(0, 0);
+            this.entriesListView.Name = "entriesListView";
+            this.entriesListView.Size = new System.Drawing.Size(458, 282);
+            this.entriesListView.TabIndex = 0;
+            this.entriesListView.UseCompatibleStateImageBehavior = false;
+            this.entriesListView.View = System.Windows.Forms.View.Details;
+            this.entriesListView.SelectedIndexChanged += new System.EventHandler(this.entriesListView_SelectedIndexChanged);
             // 
             // titleColumn
             // 
@@ -98,42 +103,36 @@
             this.dueDateColumn.Text = "do dnia";
             this.dueDateColumn.Width = 189;
             // 
-            // button2
+            // newButton
             // 
-            this.button2.Location = new System.Drawing.Point(310, 254);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Nowe";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.newButton.Location = new System.Drawing.Point(332, 254);
+            this.newButton.Name = "newButton";
+            this.newButton.Size = new System.Drawing.Size(75, 23);
+            this.newButton.TabIndex = 7;
+            this.newButton.Text = "Nowe";
+            this.newButton.UseVisualStyleBackColor = true;
+            this.newButton.Click += new System.EventHandler(this.newButton_Click_1);
             // 
-            // button1
+            // deleteButton
             // 
-            this.button1.Location = new System.Drawing.Point(110, 254);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Usuń";
-            this.button1.UseVisualStyleBackColor = true;
+            this.deleteButton.Location = new System.Drawing.Point(251, 254);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 6;
+            this.deleteButton.Text = "Usuń";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click_1);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.entrySource, "DueDate", true));
             this.dateTimePicker1.Location = new System.Drawing.Point(110, 71);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(275, 20);
             this.dateTimePicker1.TabIndex = 5;
             // 
-            // entrySource
-            // 
-            this.entrySource.DataSource = typeof(ToDoList.ToDoEntry);
-            this.entrySource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.entrySource_ListChanged);
-            // 
             // textDescription
             // 
             this.textDescription.AcceptsReturn = true;
-            this.textDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entrySource, "Description", true));
             this.textDescription.Location = new System.Drawing.Point(110, 108);
             this.textDescription.Multiline = true;
             this.textDescription.Name = "textDescription";
@@ -169,19 +168,42 @@
             // 
             // titleText
             // 
-            this.titleText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entrySource, "Title", true));
             this.titleText.Location = new System.Drawing.Point(110, 31);
             this.titleText.Name = "titleText";
             this.titleText.Size = new System.Drawing.Size(275, 20);
             this.titleText.TabIndex = 0;
             // 
-            // Form1
+            // entrySource
+            // 
+            this.entrySource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.entrySource_ListChanged);
+            // 
+            // Zapisz
+            // 
+            this.Zapisz.Location = new System.Drawing.Point(170, 254);
+            this.Zapisz.Name = "Zapisz";
+            this.Zapisz.Size = new System.Drawing.Size(75, 23);
+            this.Zapisz.TabIndex = 8;
+            this.Zapisz.Text = "Zapisz";
+            this.Zapisz.UseVisualStyleBackColor = true;
+            this.Zapisz.Click += new System.EventHandler(this.Zapisz_Click);
+            // 
+            // Wczytaj
+            // 
+            this.Wczytaj.Location = new System.Drawing.Point(89, 254);
+            this.Wczytaj.Name = "Wczytaj";
+            this.Wczytaj.Size = new System.Drawing.Size(75, 23);
+            this.Wczytaj.TabIndex = 9;
+            this.Wczytaj.Text = "Wczytaj";
+            this.Wczytaj.UseVisualStyleBackColor = true;
+            this.Wczytaj.Click += new System.EventHandler(this.Wczytaj_Click);
+            // 
+            // ToDoList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(458, 575);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "Form1";
+            this.Name = "ToDoList";
             this.Text = "ToDoList";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -197,7 +219,7 @@
 
         private System.Windows.Forms.BindingSource entrySource;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView entriesListView;
         private System.Windows.Forms.ColumnHeader titleColumn;
         private System.Windows.Forms.ColumnHeader dueDateColumn;
         private System.Windows.Forms.TextBox titleText;
@@ -206,8 +228,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button newButton;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button Zapisz;
+        private System.Windows.Forms.Button Wczytaj;
     }
 }
 
