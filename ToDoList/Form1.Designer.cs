@@ -33,15 +33,15 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.titleColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dueDateColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textTitle = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textDescription = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.entrySource = new System.Windows.Forms.BindingSource(this.components);
+            this.textDescription = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.titleText = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -69,7 +69,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Panel2.Controls.Add(this.textTitle);
+            this.splitContainer1.Panel2.Controls.Add(this.titleText);
             this.splitContainer1.Size = new System.Drawing.Size(458, 575);
             this.splitContainer1.SplitterDistance = 282;
             this.splitContainer1.TabIndex = 0;
@@ -98,40 +98,37 @@
             this.dueDateColumn.Text = "do dnia";
             this.dueDateColumn.Width = 189;
             // 
-            // textTitle
+            // button2
             // 
-            this.textTitle.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entrySource, "Title", true));
-            this.textTitle.Location = new System.Drawing.Point(110, 31);
-            this.textTitle.Name = "textTitle";
-            this.textTitle.Size = new System.Drawing.Size(275, 20);
-            this.textTitle.TabIndex = 0;
+            this.button2.Location = new System.Drawing.Point(310, 254);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Nowe";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label1
+            // button1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Tytuł";
+            this.button1.Location = new System.Drawing.Point(110, 254);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Usuń";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // dateTimePicker1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Do dnia";
+            this.dateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.entrySource, "DueDate", true));
+            this.dateTimePicker1.Location = new System.Drawing.Point(110, 71);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(275, 20);
+            this.dateTimePicker1.TabIndex = 5;
             // 
-            // label3
+            // entrySource
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 108);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Opis";
+            this.entrySource.DataSource = typeof(ToDoList.ToDoEntry);
+            this.entrySource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.entrySource_ListChanged);
             // 
             // textDescription
             // 
@@ -143,38 +140,40 @@
             this.textDescription.Size = new System.Drawing.Size(275, 134);
             this.textDescription.TabIndex = 4;
             // 
-            // dateTimePicker1
+            // label3
             // 
-            this.dateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.entrySource, "DueDate", true));
-            this.dateTimePicker1.Location = new System.Drawing.Point(110, 71);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(275, 20);
-            this.dateTimePicker1.TabIndex = 5;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(37, 108);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Opis";
             // 
-            // button1
+            // label2
             // 
-            this.button1.Location = new System.Drawing.Point(110, 254);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Usuń";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(37, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Do dnia";
             // 
-            // button2
+            // label1
             // 
-            this.button2.Location = new System.Drawing.Point(310, 254);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Nowe";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(37, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Tytuł";
             // 
-            // entrySource
+            // titleText
             // 
-            this.entrySource.DataSource = typeof(ToDoList.ToDoEntry);
-            this.entrySource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.entrySource_ListChanged);
+            this.titleText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entrySource, "Title", true));
+            this.titleText.Location = new System.Drawing.Point(110, 31);
+            this.titleText.Name = "titleText";
+            this.titleText.Size = new System.Drawing.Size(275, 20);
+            this.titleText.TabIndex = 0;
             // 
             // Form1
             // 
@@ -201,7 +200,7 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader titleColumn;
         private System.Windows.Forms.ColumnHeader dueDateColumn;
-        private System.Windows.Forms.TextBox textTitle;
+        private System.Windows.Forms.TextBox titleText;
         private System.Windows.Forms.TextBox textDescription;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

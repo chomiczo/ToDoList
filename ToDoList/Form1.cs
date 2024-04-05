@@ -21,7 +21,7 @@ namespace ToDoList
 
             titleText.DataBindings.Add("Text", entrySource, "Title", true, DataSourceUpdateMode.OnPropertyChanged);
 
-            dueDatePicker.DataBindings.Add("Value", entrySource, "DueDate",  true, DataSourceUpdateMode.OnPropertyChanged);
+            dueDatePicker.DataBindings.Add("Value", entrySource, "DueDate", true, DataSourceUpdateMode.OnPropertyChanged);
 
 
             entrySource.DataSource = entries;
